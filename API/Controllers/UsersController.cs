@@ -22,7 +22,7 @@ public class UsersController(DataContext context) : BaseApiController
     public async Task<ActionResult<User>> GetUser(int id)
     {
         var user = await context.Users.FirstOrDefaultAsync(u => u.Id == id);
-        if(user == null) 
+        if (user == null)
         {
             return NotFound();
         }
