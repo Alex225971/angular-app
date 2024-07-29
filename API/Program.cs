@@ -20,6 +20,8 @@ builder.Services.AddCors();
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionMiddleware>();
+
 app.UseCors(b => b.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:4200"));
 
 // Configure the HTTP request pipeline.
