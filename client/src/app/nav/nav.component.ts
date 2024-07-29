@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -14,6 +14,7 @@ import { TitleCasePipe } from '@angular/common';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+  @Input() deviceType = "";
   accountService = inject(AccountService);
   private router = inject(Router)
   private toastr = inject(ToastrService);

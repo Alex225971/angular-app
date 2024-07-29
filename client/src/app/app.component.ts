@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import { AccountService } from './_services/account.service';
@@ -13,12 +13,10 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  private deviceService = inject(DeviceDetectorService);
   private accountService = inject(AccountService);
+  public deviceService = inject(DeviceDetectorService);
 
   ngOnInit(): void {
-    const deviceInfo = this.deviceService.getDeviceInfo();
-    console.log(deviceInfo);
     this.setCurrentUser();
   }
 

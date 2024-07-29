@@ -1,4 +1,6 @@
-﻿using API.Data;
+﻿using API.Configurations;
+using API.Data;
+using API.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Services;
@@ -13,6 +15,10 @@ public static class ApplicationServiceExtensions
             o.UseSqlite(config.GetConnectionString("DefaultConnection"));
         });
         services.AddScoped<ITokenService, TokenService>();
+
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
         return services;
     }
 }
