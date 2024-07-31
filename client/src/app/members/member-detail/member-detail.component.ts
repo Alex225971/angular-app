@@ -17,6 +17,7 @@ export class MemberDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   images: GalleryItem[] = [];
   member?: Member;
+  //Nav tab 1 active by default
   active = 1;
 
   ngOnInit(): void {
