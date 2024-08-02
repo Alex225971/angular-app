@@ -1,5 +1,6 @@
 ﻿using API.Data;
 using API.DTOs;
+using API.Interfaces;
 using API.Models;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
