@@ -69,6 +69,8 @@ public class UsersController(IUserRepository userRepo, IMapper mapper, IPhotoSer
             PublicId = result.PublicId
         };
 
+        if(user.Photos.Count == 0) photo.IsMain = true;
+
         user.Photos.Add(photo);
 
         if(await userRepo.SaveAllAsync()) return CreatedAtAction(nameof(GetUser), new { username = user.UserName }, mapper.Map<PhotoDto>(photo));
@@ -90,7 +92,7 @@ public class UsersController(IUserRepository userRepo, IMapper mapper, IPhotoSer
 
         if(await userRepo.SaveAllAsync()) return NoContent();
 
-        return BadRequest("Error trying to se main photo");
+        return BadRequest("Error trying to set main photo");
     }
 
     [HttpDelete("delete-photo/{photoId}")]
