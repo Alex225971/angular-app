@@ -6,11 +6,13 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PhotoEditorComponent } from "../photo-editor/photo-editor.component";
+import { DatePipe } from '@angular/common';
+import { TimeagoModule } from 'ngx-timeago';
 
 @Component({
   selector: 'app-members-edit',
   standalone: true,
-  imports: [NgbNavModule, FormsModule, PhotoEditorComponent],
+  imports: [NgbNavModule, FormsModule, PhotoEditorComponent, DatePipe, TimeagoModule],
   templateUrl: './members-edit.component.html',
   styleUrl: './members-edit.component.scss'
 })

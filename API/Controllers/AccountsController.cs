@@ -32,7 +32,8 @@ public class AccountsController(DataContext dataContext, ITokenService tokenServ
         {
             Username = user.UserName,
             Token = tokenService.CreateToken(user),
-            KnownAs = user.KnownAs
+            KnownAs = user.KnownAs,
+            Gender = user.Gender
         };
         
 
@@ -58,7 +59,8 @@ public class AccountsController(DataContext dataContext, ITokenService tokenServ
             Username = user.UserName,
             KnownAs = user.KnownAs,
             Token = tokenService.CreateToken(user),
-            PhotoUrl = user.Photos.FirstOrDefault(p => p.IsMain)?.Url
+            PhotoUrl = user.Photos.FirstOrDefault(p => p.IsMain)?.Url,
+            Gender = user.Gender
         };
     }
 

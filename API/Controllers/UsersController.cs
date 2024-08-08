@@ -1,5 +1,6 @@
 ﻿
 using System.Security.Claims;
+using API.Configurations;
 using API.Controllers;
 using API.DTOs;
 using API.Extensions;
@@ -17,9 +18,11 @@ public class UsersController(IUserRepository userRepo, IMapper mapper, IPhotoSer
 {
     [AllowAnonymous]
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+    public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
     {
-        var users = await userRepo.GetMembersAsync();
+        userParams.CurrentUsername = User.GetUsername();
+        var users = await userRepo.GetMembersAsync(userParams);
+        Response.AddPaginationHeader(users);
         return Ok(users);
     }
 
