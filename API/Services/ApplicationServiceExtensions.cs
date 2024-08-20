@@ -1,5 +1,6 @@
 ﻿using API.Configurations;
 using API.Data;
+using API.Data.Repositories;
 using API.Interfaces;
 using API.Models;
 using API.Repositories;
@@ -18,6 +19,7 @@ public static class ApplicationServiceExtensions
         });
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ILikesRepository, LikesRepository>();
         services.AddScoped<IPhotoService, PhotoService>();
         services.AddScoped<LogUserActivity>();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
